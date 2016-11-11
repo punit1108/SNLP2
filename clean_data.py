@@ -36,9 +36,9 @@ t = len(filenames)
 i = 0
 
 if filenames[0].endswith('_tweets.csv'):
-    i += 1
+    # i += 1
     clean_tweets(filenames[0])
-    print "Cleaned : " + "(" + str(i) + "/" + str(t) +") " + filenames[0]
+    # print "Cleaned : " + "(" + str(i) + "/" + str(t) +") " + filenames[0]
 else:
     print "Invalid File."
 

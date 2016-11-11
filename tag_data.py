@@ -48,7 +48,7 @@ for cleaned_file in cleaned_files :
     i += 1
     print "Generating Tags : " + "(" + str(i) + "/" + str(total_files) +") " + cleaned_file
 
-    tag_writer = open("./tagged_data/" + cleaned_file + "_tags.txt", 'w')
+    tag_writer = open("./tagged_data/" + cleaned_file.replace("_cleaned.csv", "") + "_tags.txt", 'w')
 
     with open("./cleaned_data/" + cleaned_file, 'rb') as f:
 
