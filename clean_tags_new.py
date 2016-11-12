@@ -10,20 +10,26 @@ c = 0
 # print tag_files
 
 for tag_file in tag_files:
+
     c += 1
     print "Cleaning Tags : " + "(" + str(c) + "/" + str(t) + ") " + tag_file
+
     f = open("./tagged_data/" + tag_file, 'r')
     data = f.read()
     f.close()
+    lines = data.split("\n")
 
     f1 = open("./cleaned_tag_data/" + tag_file.replace("_cleaned.csv", ""), 'w')
-    lines = data.split("\n")
+
     for line in lines:
+
         words = line.split(" ")
         for i in range(0, len(words)):
             if words[i] != "E" and words[i] != "H" and words[i] != "D" :
                 words.pop(i)
+
         for i in range(0, len(words)):
+
             if words[i] == 'E':
                 f1.write('E ')
             elif words[i] == 'H':
@@ -64,6 +70,7 @@ for tag_file in tag_files:
                     f1.write('H ')
                 elif words[i - 1] == 'E' and words[i + 1] == 'E':
                     f1.write('E ')
+
         f1.write('\n')
     f1.close()
 
@@ -75,14 +82,16 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 t = len(tag_files)
 index = 0
 f1 = open("final.txt", 'w')
+
 for tag_file in tag_files:
+
     index += 1
     print "Counting : " + "(" + str(index) + "/" + str(t) + ") " + tag_file
     f = open("./cleaned_tag_data/" + tag_file, 'r')
     data = f.read()
     f.close()
-
     lines = data.split("\n")
+    
     H = 0
     E = 0
     mix = 0
@@ -92,16 +101,20 @@ for tag_file in tag_files:
 
     for line in lines:
         words = line.split(" ")
+        for i in range(0, len(words)):
+            if words[i] != "E" and words[i] != "H" and words[i] != "D" :
+                words.pop(i)
+
         h = h1 = 0
         e = e1 = 0
         d = d1 = 0
-        if words[0] == 'H':
-            h1 = h1 + 1
-        elif words[0] == 'E':
-            e1 = e1 + 1
-        elif words[0] == 'D':
-            d1 = d1 + 1
         if len(words) > 1:
+            if words[0] == 'H':
+                h1 = h1 + 1
+            elif words[0] == 'E':
+                e1 = e1 + 1
+            elif words[0] == 'D':
+                d1 = d1 + 1
             for i in range(1, len(words)):
                 if words[i] == 'E':
                     e1 = e1 + 1
