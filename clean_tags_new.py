@@ -6,12 +6,12 @@ for (dirpath, dirnames, filenames) in walk(mypath):
     tag_files.extend(filenames)
 
 t = len(tag_files)
-i = 0
+c = 0
 # print tag_files
 
 for tag_file in tag_files :
-	i += 1
-	print "Cleaning Tags : " + "(" + str(i) + "/" + str(t) +") " + tag_file
+	c += 1
+	print "Cleaning Tags : " + "(" + str(c) + "/" + str(t) +") " + tag_file
 	f = open("./tagged_data/" + tag_file, 'r')
 	data = f.read()
 	f.close()
