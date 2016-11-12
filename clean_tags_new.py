@@ -16,7 +16,7 @@ for tag_file in tag_files :
 	data = f.read()
 	f.close()
 
-	f1 = open("./cleaned_tag_data/" + tag_file.replace("_cleaned.csv", "") + ".txt", 'w')
+	f1 = open("./cleaned_tag_data/" + tag_file.replace("_cleaned.csv", ""), 'w')
 	lines = data.split("\n")
 	for line in lines:
 		words = line.split(" ")
@@ -136,6 +136,6 @@ for tag_file in tag_files :
 			mix = mix + 1
 		elif d > 3:
 			other = other + 1
-	f1.write(tag_file.replace("_cleaned.csv", "") + " H "+str(H)+" E "+str(E)+" switch "+str(switch)+" mix "+str(mix)+" other "+str(other)+"\n")
+	f1.write(tag_file.replace("_tags.txt", "") + " H "+str(H)+" E "+str(E)+" switch "+str(switch)+" mix "+str(mix)+" other "+str(other)+"\n")
 f1.close()
 print "\nFinished."
