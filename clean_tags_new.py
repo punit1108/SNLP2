@@ -84,6 +84,7 @@ index = 0
 f1 = open("final.txt", 'w')
 
 for tag_file in tag_files:
+    f2 = open("./indi_tags/"+ tag_file, "w")
 
     index += 1
     print "Counting : " + "(" + str(index) + "/" + str(t) + ") " + tag_file
@@ -91,7 +92,7 @@ for tag_file in tag_files:
     data = f.read()
     f.close()
     lines = data.split("\n")
-    
+
     H = 0
     E = 0
     mix = 0
@@ -148,14 +149,20 @@ for tag_file in tag_files:
             d = d1
         if h > 3 and e > 3:
             switch = switch + 1
+            f2.write("CS\n")
         elif h > 3 and e == 0:
             H = H + 1
+            f2.write("H\n")
         elif e > 3 and h == 0:
             E = E + 1
+            f2.write("E\n")
         elif e > 0 and h > 0:
             mix = mix + 1
+            f2.write("CM\n")
         elif d > 3:
             other = other + 1
+            f2.write("other\n")
+    f2.close()
     f1.write(tag_file.replace("_tags.txt", "") + " H " + str(H) + " E " + str(E) + " switch " + str(switch) + " mix " + str(mix) + " other " + str(other) + " total " + str(total) + "\n")
 f1.close()
 print "\nFinished."
